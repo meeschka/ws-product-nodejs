@@ -37,12 +37,14 @@ const rateLimiter = (req, res, next) => {
                     let dataLength = data.length;
                     let i = 0;
                     while (sameTime === false && i < dataLength) {
+                        //if request batch already exists, increment counter
                         if (data[i].requestTime === currentTime) {
                             sameTime = true;
                             data[i].counter++
                         }
                         i++
                     }
+                    //otherwise, create request batch with 1 request
                     if (!sameTime){
                         data.push({
                             requestTime: currentTime,
@@ -50,17 +52,16 @@ const rateLimiter = (req, res, next) => {
                         })
                     }
                     client.set(user, JSON.stringify(data))
-                    console.log(client.get(user))
                     next();
                 }
             })
         } else {
+            //create user with single request batch
             const data = [{
                 requestTime: currentTime,
                 counter: 1
             }]
             client.set(user, JSON.stringify(data))
-            console.log(client.get(user))
             next();
         }
     })
