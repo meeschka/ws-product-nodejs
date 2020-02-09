@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EQ Works Index</title>
+    <link rel='stylesheet' type="text/css" href='https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/simplex/bootstrap.min.css' />
+    <link rel='stylesheet' type="text/css" href='/styles/style.css' />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
+  </head>
+  <body>
+    <h1>Chart View</h1>
+    <div>
+        <a href="#" class="btn btn-primary btn-lg active" id="events-btn" role="button" aria-pressed="true">Events</a>
+        <a href="#" class="btn btn-primary btn-lg active" id="stats-btn" role="button" aria-pressed="false">Stats</a>
+    </div>
+    <div>
+        <a href="#" class="btn btn-primary btn-lg active" id="hourly-btn" role="button" aria-pressed="true">Hourly</a>
+        <a href="#" class="btn btn-primary btn-lg active" id="daily-btn" role="button" aria-pressed="false">Daily</a>
+    </div>
+    <div id='message'></div>
+    <div class="container">
+        <canvas id="myChart"></canvas>
+    </div>
+    <a href='/charts'>See Charts</a>
+    <button>See data table</button>
+    <button>See geochart</button>
+  </body>
+  
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="/js/charts.js"></script>
+</html>

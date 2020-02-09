@@ -11,6 +11,8 @@ const pool = new pg.Pool({
   password: process.env.PGPASSWORD,
   port: process.env.PGPORT
 })
+app.set('view engine', 'ejs');
+app.use(express.static('public'))
 
 const {rateLimiter} = require('./rateLimiter')
 
@@ -21,7 +23,7 @@ const queryHandler = (req, res, next) => {
 }
 
 app.get('/', (req, res) => {
-  res.send('Welcome to EQ Works 😎')
+  res.render('index')
 })
 
 app.use(rateLimiter)
@@ -78,6 +80,14 @@ app.get('/poi', (req, res, next) => {
   `
   return next()
 }, queryHandler)
+
+//new view routes for question 2
+app.get('/charts', (req, res, next) => {
+  res.render('charts')
+})
+app.get('/tables', (req, res, next) => {
+  res.render('tables')
+})
 
 app.listen(process.env.PORT || 5555, (err) => {
   if (err) {
