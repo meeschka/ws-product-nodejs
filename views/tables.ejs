@@ -1,13 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tables</title>
-    <link rel='stylesheet' href='/styles/style.css' />
+    <title>EQ Works Index</title>
+    <link rel='stylesheet' type="text/css" href='https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/simplex/bootstrap.min.css' />
+    <link rel='stylesheet' type="text/css" href='/styles/style.css' />
   </head>
-  <body>
-    <h1>Tables</h1>
-    <table>
-
-    </table>
+  <body class="d-flex flex-column align-items-center">
+    <div class="controls d-flex flex-row justify-content-around w-75">
+      <a href="#" class="btn btn-primary btn-lg active mt-2" id="hourly-btn" role="button">Hourly</a>
+      <a href="#" class="btn btn-primary btn-lg active mt-2" id="daily-btn" role="button">Daily</a>
+      <a href="#" class="btn btn-info btn-lg active mt-2" id="events-btn" role="button">Events</a>
+      <a href="#" class="btn btn-info btn-lg active mt-2" id="stats-btn" role="button">Stats</a>
+  </div>
+  <div class='d-flex flex-row justify-content-around w-75 mt-4'>
+      <a href='/charts'>See Charts</a>
+  </div>
+    <div id="table-title" class="mt-5"></div>
+    <div id="message"></div>
+    <div class="container table-container">
+        
+    </div>
+    
   </body>
+  
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="/js/tables.js"></script>
 </html>

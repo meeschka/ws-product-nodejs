@@ -56,7 +56,8 @@ function renderChart(data, labels) {
         data: {
             labels: labels,
             datasets:[{
-                data: data
+                data: data,
+                backgroundColor: "rgba(255,0,0,0.8)",
             }]
         },
         options: {
@@ -92,6 +93,8 @@ function getData(timeframe, type){
                         if (key === 'date'){
                             let str = item.hour ? `${item[key].slice(0,10)}-${item.hour}:00` : item[key].slice(0,10)
                             dataObj[key].push(str)
+                        } else if (key === 'hour') {
+                            dataObj[key].push(item.hour+':00')
                         } else {
                             dataObj[key].push(item[key])
                         }
@@ -112,7 +115,6 @@ function getDataAndUpdate() {
         .then(() => {
             renderChart(data[state.type][state.timeframe].data[state.data], data[state.type][state.timeframe].data[state.timelabel])
         })
-        console.log(data)
     } else renderChart(data[state.type][state.timeframe].data[state.data], data[state.type][state.timeframe].data[state.timelabel])
 }
 
