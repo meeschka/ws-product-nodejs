@@ -7,26 +7,19 @@ Work Sample for Product Aspect, Node.js Variant
 
 The following are the recommended options, but you're free to use any means to get started.
 
-#### Remote Option: Glitch.com
-
-1. [![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/import/github/EQWorks/ws-product-nodejs)
-2. Populate `.env` file with the environment variables given in the problem set we send to you through email
-3. Click on `Show Live` and you should see `Welcome to EQ Works 😎`
-
-#### Local Option 1: Node.js 6.10+
+#### Local Option: Node.js 6.10+
 
 1. Clone this repository
 2. Install Node.js dependencies `$ npm install`
 3. Set environment variables given in the problem set we send to you through email and run `$ npm run dev`
+4. Ensure you have a running Redis client, and add the Redis url to the environment variables.
 4. Open your browser and point to `localhost:5555` and you should see `Welcome to EQ Works 😎`
 
-#### Local Option 2: Docker (`docker-compose` needed)
+#### Remote Option
 
-1. Clone this repository
-2. Create and populate `.env` file with the environment variables given in the problem set we send to you through email
-3. `$ docker-compose up` (or `$ docker-compose up -d` to run as a daemon)
-4. Open your browser and point to `localhost:5555` and you should see `Welcome to EQ Works 😎`
+This project is hosted on heroku [here](https://eq-works-project.herokuapp.com/).
 
-### Notes on working through the problems
+### Solution Notes
 
-Make sure any additional Node.js level dependencies are properly added in `package.json`. We encourage a healthy mixture of your own implementations, and good choices of existing open-source libraries/tools. We will comment in the problems to indicate which ones cannot be solved purely through an off-the-shelf solution.
+The [Redis documentation](https://redis.io/topics/quickstart) states that Redis lack encryption and is vulnerable to exploits if it is exposed to the web without protection. I have used Heroku for deployment, which [recommends](https://devcenter.heroku.com/articles/securing-heroku-redis) using SSL encryption via Stunnel Buildpack. This is only available for production level plans, so I considered it outside the scope of this exercise. In a production environment, it would be necessary to protect the Redis instance.
+
