@@ -44,10 +44,14 @@ let state = {
     data: 'events',
     timelabel: 'date'
 }
+let myChart;
 function renderChart(data, labels) {
     const chartEl = $('#myChart')
     $('#chart-title').html(`<h2>${state.timeframe.charAt(0).toUpperCase() + state.timeframe.slice(1)} ${state.data.charAt(0).toUpperCase() + state.data.slice(1)}</h2>`)
-    let myChart = new Chart(chartEl, {
+    if (myChart) {
+        myChart.destroy();
+      }
+    myChart = new Chart(chartEl, {
         type: 'bar',
         data: {
             labels: labels,
@@ -72,7 +76,7 @@ function renderChart(data, labels) {
             } ,
             legend: {
                 display: false
-            }
+            },
         }
     })
 }
@@ -118,8 +122,8 @@ $(document).ready(()=>{
         renderChart(data[state.type][state.timeframe].data[state.data], data[state.type][state.timeframe].data[state.timelabel])
     })
     .catch(err => {
-         console.log(err)
-        // $('#message').innerHtml(`Unable to retrieve data: ${err}`)
+        console.log(err)
+        $('#message').html(`Unable to retrieve data: ${err}`)
     })
 })
 

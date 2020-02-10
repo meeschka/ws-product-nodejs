@@ -6,34 +6,36 @@
     <link rel='stylesheet' type="text/css" href='/styles/style.css' />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
   </head>
-  <body>
-    <h1>Chart View</h1>
-    <div>
-        <a href="#" class="btn btn-primary btn-lg active" id="hourly-btn" role="button" aria-pressed="true">Hourly</a>
-        <a href="#" class="btn btn-primary btn-lg active" id="daily-btn" role="button" aria-pressed="false">Daily</a>
-    </div>
-    <div>
-        <div class="radio">
-            <label><input type="radio" name="type" value="events" checked>Events</label>
-          </div>
-          <div class="radio">
-            <label><input type="radio" name="type" value="impressions">Impressions</label>
-          </div>
-          <div class="radio">
-            <label><input type="radio" name="type" value="clicks">Clicks</label>
-          </div>
-          <div class="radio">
-            <label><input type="radio" name="type" value="revenue">Revenue</label>
-          </div>
-    </div>
-    <div id="chart-title"></div>
+  <body class="d-flex flex-column align-items-center">
+     
+    <div id="chart-title" class="mt-5"></div>
     <div id="message"></div>
     <div class="container">
         <canvas id="myChart"></canvas>
     </div>
-    <a href='/charts'>See Charts</a>
-    <button>See data table</button>
-    <button>See geochart</button>
+    <div class="controls d-flex flex-row justify-content-around w-75">
+        <div class="d-flex flex-column justify-content-around">
+            <a href="#" class="btn btn-primary btn-lg active" id="hourly-btn" role="button" aria-pressed="true">Hourly</a>
+            <a href="#" class="btn btn-primary btn-lg active" id="daily-btn" role="button" aria-pressed="false">Daily</a>
+        </div>
+        <div>
+            <div class="radio">
+                <label ><input type="radio" name="type" value="events"  class="mr-2" checked>Events</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="type" value="impressions"  class="mr-2">Impressions</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="type" value="clicks" class="mr-2">Clicks</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="type" value="revenue" class="mr-2">Revenue</label>
+              </div>
+        </div>
+    </div>
+    <div class='d-flex flex-row justify-content-around w-75 mt-4'>
+        <a href='/tables'>See Tables</a>
+    </div>
   </body>
   
   <script
