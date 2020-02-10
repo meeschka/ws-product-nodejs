@@ -46,13 +46,33 @@ let state = {
 }
 function renderChart(data, labels) {
     const chartEl = $('#myChart')
+    $('#chart-title').html(`<h2>${state.timeframe.charAt(0).toUpperCase() + state.timeframe.slice(1)} ${state.data.charAt(0).toUpperCase() + state.data.slice(1)}</h2>`)
     let myChart = new Chart(chartEl, {
         type: 'bar',
         data: {
             labels: labels,
             datasets:[{
-                data: data,
+                data: data
             }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                  scaleLabel: {
+                    display: true,
+                    labelString: state.data.charAt(0).toUpperCase() + state.data.slice(1)
+                  }
+                }],
+                xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: state.timelabel.charAt(0).toUpperCase() + state.timelabel.slice(1)
+                    }
+                }]
+            } ,
+            legend: {
+                display: false
+            }
         }
     })
 }
@@ -60,14 +80,14 @@ function renderChart(data, labels) {
 function getData(timeframe, type){
     return new Promise((resolve, reject) => {
         let dataObj = data[type][timeframe].data;
-        console.log(dataObj)
         $.ajax({
             url: data[type][timeframe].url,
             success: function(result){
                 result.forEach(item => {
                     for (const key in item) {
                         if (key === 'date'){
-                            dataObj[key].push(item[key].slice(0,10))
+                            let str = item.hour ? `${item[key].slice(0,10)}-${item.hour}:00` : item[key].slice(0,10)
+                            dataObj[key].push(str)
                         } else {
                             dataObj[key].push(item[key])
                         }
@@ -111,11 +131,14 @@ $('#hourly-btn').on('click', ()=> {
     state.timeframe = 'hourly'
     getDataAndUpdate();
 })
-$('#events-btn').on('click', ()=> {
-    state.tpye = 'events'
-    getDataAndUpdate();
-})
-$('#stats-btn').on('click', ()=> {
-    state.tpye = 'stats'
-    getDataAndUpdate();
+$('.radio').on('change', () => {
+    dataType = $('input[name=type]:checked').val();
+    if (dataType === 'events') {
+        state.type = 'events'
+        state.data = 'events'
+    } else {
+        state.type = 'stats'
+        state.data = dataType
+    }
+    getDataAndUpdate()
 })

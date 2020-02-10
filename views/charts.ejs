@@ -9,14 +9,25 @@
   <body>
     <h1>Chart View</h1>
     <div>
-        <a href="#" class="btn btn-primary btn-lg active" id="events-btn" role="button" aria-pressed="true">Events</a>
-        <a href="#" class="btn btn-primary btn-lg active" id="stats-btn" role="button" aria-pressed="false">Stats</a>
-    </div>
-    <div>
         <a href="#" class="btn btn-primary btn-lg active" id="hourly-btn" role="button" aria-pressed="true">Hourly</a>
         <a href="#" class="btn btn-primary btn-lg active" id="daily-btn" role="button" aria-pressed="false">Daily</a>
     </div>
-    <div id='message'></div>
+    <div>
+        <div class="radio">
+            <label><input type="radio" name="type" value="events" checked>Events</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="type" value="impressions">Impressions</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="type" value="clicks">Clicks</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="type" value="revenue">Revenue</label>
+          </div>
+    </div>
+    <div id="chart-title"></div>
+    <div id="message"></div>
     <div class="container">
         <canvas id="myChart"></canvas>
     </div>

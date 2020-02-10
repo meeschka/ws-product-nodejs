@@ -5,7 +5,7 @@ const client = redis.createClient(process.env.REDIS_URL)
 client.on('error', err => console.log(`Error ${err}`))
 
 const timeWindow = 60 ; //time limit window in seconds
-const dataLimit = 10; //number of requests allowed in time window
+const dataLimit = 100; //number of requests allowed in time window
 
 const rateLimiter = (req, res, next) => {
     const user = req.header('x-forwarded-for') || req.connection.remoteAddress
